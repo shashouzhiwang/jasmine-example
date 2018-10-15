@@ -1,0 +1,1 @@
+# jasmine-examples [![Build Status](https://travis-ci.org/shashouzhiwang/test.svg?branch=master)](https://travis-ci.org/shashouzhiwang/test)

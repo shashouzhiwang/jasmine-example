@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Mon Oct 15 2018 18:30:21 GMT+0800 (CST)
+var webpackConfig = require('./webpack.karma.test.js');
 
 module.exports = function(config) {
   config.set({
@@ -16,7 +17,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'lib/**/*.js',
-        'spec/**/*[sS]pec.js'
+        // 'spec/**/*[sS]pec.js',
+        'spec/**/*.js'
     ],
 
 
@@ -27,8 +29,20 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
+
+    // preprocessors: ['webpack', 'sourcemap'],
+
+      preprocessors: {
+          ['lib/**/*.js']: ['webpack'],
+          ['spec/**/*[sS]pec.js']: ['webpack', 'sourcemap']
+      },
+
+    webpack: webpackConfig,
+
+    webpackMiddleware: {
+       stats: 'errors-only'
     },
+
 
 
     // test results reporter to use
@@ -76,7 +90,7 @@ module.exports = function(config) {
                 "**/*[sS]pec.js"
             ],
             "spec_dir": "spec",
-            stopOnFailure: true,
+            stopOnFailure: false,
             failFast: true,
         }
     }

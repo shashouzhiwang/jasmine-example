@@ -7,8 +7,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start",
-    "jasmine": "./node_modules/.bin/jasmine"
+    "test": "./node_modules/karma/bin/karma start  --single-run --browsers ChromeHeadless",
+    "jasmine": "./node_modules/.bin/jasmine",
+    "test-chrome": "./node_modules/.bin/jasmine"
   },
   "author": "",
   "license": "ISC",

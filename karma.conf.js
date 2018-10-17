@@ -94,9 +94,7 @@ module.exports = function(config) {
             failFast: true,
         }
     }
-  }),
-  console.log(config);
-
+  })
 
 
 

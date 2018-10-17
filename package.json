@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start  --single-run --browsers ChromeHeadless",
-    "jasmine": "./node_modules/.bin/jasmine",
-    "test-chrome": "./node_modules/.bin/jasmine"
+    "jasmine": "./node_modules/.bin/jasmine --config=test-config/jasmine.json",
+    "test-chrome": "./node_modules/karma/bin/karma start"
   },
   "author": "",
   "license": "ISC",

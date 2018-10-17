@@ -18,7 +18,7 @@ module.exports = function(config) {
     files: [
         'lib/**/*.js',
         // 'spec/**/*[sS]pec.js',
-        'spec/**/*.js'
+        'test-config/**/*.js'
     ],
 
 
@@ -31,11 +31,10 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 
     // preprocessors: ['webpack', 'sourcemap'],
-
-      preprocessors: {
-          ['lib/**/*.js']: ['webpack'],
-          ['spec/**/*[sS]pec.js']: ['webpack', 'sourcemap']
-      },
+    preprocessors: {
+      ['lib/**/*.js']: ['webpack'],
+      ['lib/**/*.spec.js']: ['webpack', 'sourcemap']
+    },
 
     webpack: webpackConfig,
 
@@ -85,11 +84,13 @@ module.exports = function(config) {
         jasmine: {
             random: true,
             stopSpecOnExpectationFailure: false,
-            helpers: ["helpers/**/*.js"],
             spec_files: [
-                "**/*[sS]pec.js"
+                "../lib/**/*.spec.js"
             ],
-            "spec_dir": "spec",
+            helpers: [
+                "./**/SpecHelper.js"
+            ],
+            spec_dir: "test-config",
             stopOnFailure: false,
             failFast: true,
         }

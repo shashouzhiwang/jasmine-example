@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-2"],
+      "plugins": ["istanbul", {
+        "exclude": [
+          "**/*.spec.js"
+        ]
+      }]
+    }
+  }
+}

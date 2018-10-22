@@ -1,6 +1,7 @@
 // Karma configuration
 // Generated on Mon Oct 15 2018 18:30:21 GMT+0800 (CST)
 var webpackConfig = require('./webpack.karma.test.js');
+var path = require('path');
 
 module.exports = function(config) {
   config.set({
@@ -16,7 +17,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'lib/**/*.js',
+        'src/**/*.js',
         // 'spec/**/*[sS]pec.js',
         'test-config/**/*.js'
     ],
@@ -24,6 +25,7 @@ module.exports = function(config) {
 
     // list of files / patterns to exclude
     exclude: [
+
     ],
 
 
@@ -32,8 +34,9 @@ module.exports = function(config) {
 
     // preprocessors: ['webpack', 'sourcemap'],
     preprocessors: {
-      ['lib/**/*.js']: ['webpack'],
-      ['lib/**/*.spec.js']: ['webpack', 'sourcemap']
+      ['src/**/*.js']: ['webpack', 'coverage', 'sourcemap'],
+      ['src/**/*.spec.js']: ['webpack'],
+      ['src/**/(!*.spec).js']: ['coverage']
     },
 
     webpack: webpackConfig,
@@ -47,8 +50,8 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
-
+    // reporters: ['progress', 'coverage'],
+    reporters: [ 'progress', 'coverage-istanbul' ],
 
     // web server port
     port: 9876,
@@ -72,6 +75,7 @@ module.exports = function(config) {
     browsers: ['Chrome'],
 
 
+
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
@@ -85,7 +89,7 @@ module.exports = function(config) {
             random: true,
             stopSpecOnExpectationFailure: false,
             spec_files: [
-                "../lib/**/*.spec.js"
+                "../src/**/*.spec.js"
             ],
             helpers: [
                 "./**/SpecHelper.js"
@@ -94,10 +98,21 @@ module.exports = function(config) {
             stopOnFailure: false,
             failFast: true,
         }
+    },
+
+    coverageIstanbulReporter: {
+        reports: ['html', 'lcovonly', 'text-summary'],
+        dir: path.join(__dirname, 'coverage'),
+        combineBrowserReports: true,
+        fixWebpackSourcePaths: true,
+        skipFilesWithNoCoverage: true,
+        'report-config': {
+            html: {
+                subdir: 'html'
+            }
+        },
     }
-  })
 
-
-
+  });
 
 };

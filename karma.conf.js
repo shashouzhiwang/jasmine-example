@@ -51,7 +51,7 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     // reporters: ['progress', 'coverage'],
-    reporters: [ 'progress', 'coverage-istanbul' ],
+    reporters: [ 'progress', 'coverage-istanbul', 'dots', 'kjhtml' ],
 
     // web server port
     port: 9876,
